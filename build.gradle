@@ -36,6 +36,18 @@ repositories {
 	maven {
 		url "https://maven.terraformersmc.com/"
 	}
+		maven { 
+        name = "Ladysnake Mods"
+        url = "https://ladysnake.jfrog.io/artifactory/mods"
+        content {
+            includeGroup 'io.github.ladysnake'
+            includeGroupByRegex 'io\\.github\\.onyxstudios.*'
+        }
+    }
+    maven {
+        name = "Nexus Repository Manager"
+        url = 'https://oss.sonatype.org/content/repositories/snapshots'
+    }
 	mavenLocal()
 }
 
@@ -50,6 +62,12 @@ dependencies {
 	modApi("me.shedaniel.cloth:cloth-config-fabric:${project.clothconfig_version}") {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
+	    modImplementation "io.github.ladysnake:impersonate:${impersonate_version}"
+    include "io.github.ladysnake:impersonate:${impersonate_version}"
+    // Impersonate dependencies
+    include "me.lucko:fabric-permissions-api:${fpa_version}"
+    include "com.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:${cca_version}"
+    include "com.github.onyxstudios.Cardinal-Components-API:cardinal-components-entity:${cca_version}"
 }
 
 processResources {
